@@ -7,6 +7,7 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
+var port = process.env.PORT || 3000;
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
@@ -104,7 +105,7 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('http://localhost:3000/#' +
+        res.redirect('https://spotify-musician.herokuapp.com/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
@@ -143,5 +144,4 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-app.listen(process.env.PORT || 3000,
-	() => console.log("Server is running..."));
+app.listen(port, () => console.log("Server is running..."));
