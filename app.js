@@ -1,8 +1,4 @@
 /**
- * This is an example of a basic node.js script that performs
- * the Authorization Code oAuth2 flow to authenticate against
- * the Spotify Accounts.
- *
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
@@ -16,11 +12,7 @@ var cookieParser = require('cookie-parser');
 
 var redirect_uri = 'https://musician-login.herokuapp.com/callback'; // Your redirect uri
 
-/**
- * Generates a random string containing numbers and letters
- * @param  {number} length The length of the string
- * @return {string} The generated string
- */
+
 var generateRandomString = function(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -44,7 +36,7 @@ app.get('/login', function(req, res) {
   var state = generateRandomString(16);
   res.cookie(stateKey, state, { httpOnly: true });
 
-  // your application requests authorization
+  // application requests authorization
   var scope = 'user-read-private user-read-email user-read-playback-state user-library-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
@@ -58,7 +50,7 @@ app.get('/login', function(req, res) {
 
 app.get('/callback', function(req, res) {
 
-  // your application requests refresh and access tokens
+  // application requests refresh and access tokens
   // after checking the state parameter
 
   var code = req.query.code || null;
