@@ -7,16 +7,16 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
-var port = 3001;
+var port = process.env.PORT || 3000;
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = ''; // Your client id
-var client_secret = ''; // Your secret
-var redirect_uri = 'http://localhost:3001/callback'; // Your redirect uri
+var client_id = 'f39d969c0e914fe4a88b5300b6ace0b3'; // Your client id
+var client_secret = '1bc1cd69ec884d5aa8e7c44578f883dc'; // Your secret
+var redirect_uri = 'https://musician-login.herokuapp.com/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -108,7 +108,7 @@ app.get('/callback', function(req, res) {
         res.cookie('refresh_token', refresh_token, { httpOnly: true });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('http://localhost:3000/#' +
+        res.redirect('https://spotify-musician.herokuapp.com/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
