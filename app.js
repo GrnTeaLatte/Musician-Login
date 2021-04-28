@@ -14,8 +14,6 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = 'f39d969c0e914fe4a88b5300b6ace0b3'; // Your client id
-var client_secret = '1bc1cd69ec884d5aa8e7c44578f883dc'; // Your secret
 var redirect_uri = 'https://musician-login.herokuapp.com/callback'; // Your redirect uri
 
 /**
