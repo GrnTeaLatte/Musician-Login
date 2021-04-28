@@ -10,7 +10,7 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var redirect_uri = 'https://musician-login.herokuapp.com/callback'; // Your redirect uri
+var redirect_uri = 'https://musician-login.herokuapp.com/callback'; // redirect uri
 
 
 var generateRandomString = function(length) {
